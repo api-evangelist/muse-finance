@@ -1,0 +1,26 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+generated: '2026-07-20'
+method: searched
+provider: Muse Finance
+providerId: muse-finance
+created: '2026-07-20'
+modified: '2026-07-20'
+tags:
+  - Rate Limiting
+  - Embedded Finance
+description: >-
+  Muse Finance API enforces a fixed request ceiling per partner. Exceeding it
+  may result in temporary access restriction. Harvested from the public
+  Troubleshooting documentation.
+sources:
+  - https://api-docs.getmymuse.com/docs/troubleshooting
+responseCodes:
+  throttled: 429
+limits:
+  - name: All requests
+    scope: partner
+    metric: requests_per_window
+    limit: 600
+    timeFrame: 5-minutes
+    window_seconds: 300

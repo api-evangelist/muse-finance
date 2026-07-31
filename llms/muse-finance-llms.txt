@@ -1,0 +1,38 @@
+# Muse Finance
+
+> Muse Finance is a UK embedded-finance platform providing modular working-capital infrastructure — invoice finance, trade finance and supply finance — that lenders, originators, foreign-exchange providers and payment platforms integrate via a white-label product or REST API. The API lets partners submit and convert leads, manage finance applications and agreements, raise funds requests, and handle credit-backed offers.
+
+## API
+- [Muse Finance API Documentation](https://api-docs.getmymuse.com/docs/): Developer portal for the Muse Finance embedded-finance REST API.
+- [Getting Started](https://api-docs.getmymuse.com/docs/getting-started): Onboarding and credential setup.
+- [Authentication](https://api-docs.getmymuse.com/docs/authentication): JWT bearer token + x-api-key header; token exchange from issued API key + Client ID + Client Secret.
+- [Guideline](https://api-docs.getmymuse.com/docs/guideline): Lead → application → agreement → funds-request workflow, webhook vs polling.
+- [Features](https://api-docs.getmymuse.com/docs/features): Leads, Applications, Agreements, Funds Requests, Credit Backed Offers operations.
+- [Data Types](https://api-docs.getmymuse.com/docs/data-types): Status codes and enumerations.
+- [Troubleshooting](https://api-docs.getmymuse.com/docs/troubleshooting): HTTP status codes and rate limits (600 req / 5 min).
+- [Swagger / API reference](https://cdn-live.funding-systems.com/api-documents/finance-api/swagger.html): OpenAPI reference (partner-gated host).
+
+## Operations
+- Leads: `GET /leads`, `POST /leads`, `GET /leads/{leadId}`, `POST /leads/{leadId}/convert`
+- Applications: `GET /applications`, `GET /applications/{id}`
+- Agreements: `GET /agreements`, `GET /agreements/{id}`
+- Funds Requests: `GET /fundsRequest`, `POST /fundsRequest`, submit exchange rate
+- Suppliers: `POST /supplier`
+- Credit Backed Offers: list, get, approve, appeal
+
+## Repo artifacts
+- [Authentication profile](authentication/muse-finance-authentication.yml)
+- [API conventions](conventions/muse-finance-conventions.yml)
+- [Error / status codes](errors/muse-finance-problem-types.yml)
+- [Rate limits](rate-limits/muse-finance-rate-limits.yml)
+- [Webhooks](asyncapi/muse-finance-webhooks.yml)
+- [Data model](data-model/muse-finance-data-model.yml)
+- [Candidate MCP tools](mcp/muse-finance-mcp.yml)
+- [Conformance](conformance/muse-finance-conformance.yml)
+- [Lifecycle](lifecycle/muse-finance-lifecycle.yml)
+
+## Company
+- [Muse Finance homepage](https://getmymuse.com/): AI-powered invoice & SME finance platform for UK lenders.
+- [FAQ](https://getmymuse.com/faq)
+- [Partner Portal](https://muse-portal-prod.portal.getmymuse.com/)
+- Support: technical-support@getmymuse.com

@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: https://api-docs.getmymuse.com/docs/guideline
+spec_type: Webhooks
+description: >-
+  Muse Finance supports webhooks so partners can be notified of relevant events
+  (primarily lead/application/agreement/funds-request status transitions)
+  instead of polling. The public Guideline documents the webhook-vs-polling
+  choice but does not publish a formal event catalogue or payload schema; the
+  events below are DERIVED from the documented status-code lifecycles and are
+  marked candidate. Confirm the exact event names and payloads with Muse during
+  partner onboarding.
+delivery:
+  transport: HTTP POST callback to a partner-registered endpoint
+  alternative: periodic GET polling (e.g. GET /leads) where webhooks are not used
+events:
+  - name: lead.status_changed
+    status: candidate
+    trigger: A lead transitions between lifecycle states.
+    states: [SUBMITTED, QUALIFIED, DISQUALIFIED, DUPLICATE, CONVERTED, HAS_ERRORS]
+    source: data-types Lead Status Code
+  - name: application.status_changed
+    status: candidate
+    trigger: A finance application transitions state.
+    states: [IN_PROGRESS, CLOSED_WON, CLOSED_LOST]
+    source: data-types Application Status Code
+  - name: agreement.status_changed
+    status: candidate
+    trigger: A finance agreement transitions state.
+    states: [ACTIVE, COLLECT_OUT, TERMINATED, TERMINATED_DEFAULTED]
+    source: data-types Agreement Status Code
+  - name: funds_request.status_changed
+    status: candidate
+    trigger: A funds request transitions state.
+    states: [REQUESTED, PENDING_VERIFICATION, CURRENCY_EXCHANGE, IPU_SENT, IPU_RECEIVED, AMENDED, APPROVED, REJECTED, CANCELED_SPLIT_REQUEST]
+    source: data-types Fund Request Status Code
+  - name: credit_backed_offer.status_changed
+    status: candidate
+    trigger: A credit-backed offer transitions state.
+    states: [AWAITING_CLIENT_DECISION, AWAITING_PARTNER_DECISION, PARTNER_APPEALED, CLIENT_APPROVED, CLIENT_DECLINED]
+    source: data-types Credit Backed Offer Status Code

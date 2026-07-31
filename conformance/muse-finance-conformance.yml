@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  Derived from the documented authentication, transport and error semantics at
+  https://api-docs.getmymuse.com/docs/ . No published certifications (SOC 2 /
+  ISO 27001 / PCI) were found, so no Compliance claim is asserted.
+standards:
+  - id: rest-json
+    conforms: true
+    evidence: REST over HTTPS with JSON request/response bodies.
+  - id: jwt-bearer
+    conforms: true
+    evidence: Authorization header carries a JWT bearer token (RFC 6750 / RFC 7519).
+  - id: api-key-header
+    conforms: true
+    evidence: Static API key supplied in the x-api-key header.
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth 2.0 flows or scopes are documented; auth is JWT + API key.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are conveyed via HTTP status codes; no application/problem+json envelope documented.
+  - id: rate-limiting
+    conforms: true
+    evidence: 600 requests per 5-minute window enforced per partner.
+  - id: webhooks
+    conforms: true
+    evidence: Partner webhook callbacks documented for event notification.

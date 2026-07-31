@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: https://api-docs.getmymuse.com/docs/references
+description: >-
+  Lifecycle and operational posture of the Muse Finance API, harvested from the
+  public documentation. Muse publishes an "API Update Notifications" reference
+  page for communicating changes. No formal versioning scheme, deprecation
+  policy (RFC 8594 Sunset/Deprecation headers), SLA, or public status page was
+  found in the docs — recorded as absent rather than fabricated.
+versioning:
+  scheme: unknown
+  docs: https://api-docs.getmymuse.com/docs/references
+update_notifications:
+  url: https://api-docs.getmymuse.com/docs/references
+  detail: '"API Update Notifications" reference for staying informed about API changes.'
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+sla:
+  url: null
+status_page: null
+rate_limit:
+  limit: 600 requests / 5-minute window
+  detail: rate-limits/muse-finance-rate-limits.yml
+deprecated_operations: []

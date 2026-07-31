@@ -1,0 +1,84 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  https://api-docs.getmymuse.com/docs/features and
+  https://api-docs.getmymuse.com/docs/data-types — entities and their
+  enumerated status codes harvested from the public API documentation.
+description: >-
+  Entity-relationship model of the Muse Finance embedded-finance API. A partner
+  submits a Lead; a qualified Lead converts into an Application; an approved
+  Application produces an Agreement; funding is drawn via Funds Requests, and
+  Credit Backed Offers govern the credit decision. Relationships are inferred
+  from the documented workflow (Guideline) and the object list (Features); id
+  field names are not published, so relationship `via` values are candidate.
+entities:
+  - name: Lead
+    operations:
+      - 'GET /leads (list)'
+      - 'POST /leads (create)'
+      - 'GET /leads/{leadId} (get)'
+      - 'PATCH /leads/{leadId} (update)'
+      - 'POST /leads/{leadId}/convert (convert)'
+    status_enum: [SUBMITTED, QUALIFIED, DISQUALIFIED, DUPLICATE, CONVERTED, HAS_ERRORS]
+  - name: Application
+    operations:
+      - 'GET /applications (list)'
+      - 'GET /applications/{id} (get)'
+    status_enum: [IN_PROGRESS, CLOSED_WON, CLOSED_LOST]
+  - name: Agreement
+    operations:
+      - 'GET /agreements (list)'
+      - 'GET /agreements/{id} (get)'
+    status_enum: [ACTIVE, COLLECT_OUT, TERMINATED, TERMINATED_DEFAULTED]
+  - name: FundsRequest
+    operations:
+      - 'GET /fundsRequest (list)'
+      - 'POST /fundsRequest (create)'
+      - 'submit exchange rate (POST)'
+    status_enum: [REQUESTED, PENDING_VERIFICATION, CURRENCY_EXCHANGE, IPU_SENT, IPU_RECEIVED, AMENDED, APPROVED, REJECTED, CANCELED_SPLIT_REQUEST]
+  - name: CreditBackedOffer
+    operations:
+      - 'list / get'
+      - 'approve (POST)'
+      - 'appeal (POST)'
+    status_enum: [AWAITING_CLIENT_DECISION, AWAITING_PARTNER_DECISION, PARTNER_APPEALED, CLIENT_APPROVED, CLIENT_DECLINED]
+  - name: Supplier
+    operations:
+      - 'POST /supplier (create)'
+relationships:
+  - from: Lead
+    to: Application
+    kind: has_one
+    via: leadId
+    note: A converted Lead becomes an Application.
+    confidence: candidate
+  - from: Application
+    to: Agreement
+    kind: has_one
+    via: applicationId
+    confidence: candidate
+  - from: Agreement
+    to: FundsRequest
+    kind: has_many
+    via: agreementId
+    confidence: candidate
+  - from: FundsRequest
+    to: Supplier
+    kind: belongs_to
+    via: supplierId
+    confidence: candidate
+  - from: Application
+    to: CreditBackedOffer
+    kind: has_many
+    via: applicationId
+    confidence: candidate
+enums:
+  ProductType: [INVOICE_FINANCE, SUPPLY_FINANCE]
+  CatalogueItemType: [INVOICE_FINANCE_SINGLE_INVOICE, INVOICE_FINANCE_SELECTIVE_DEBTOR, INVOICE_FINANCE_WHOLE_BOOK_DISCLOSED, SUPPLY_FINANCE_PRODUCT_ONE]
+  RecommendProduct: [INVOICE_FINANCE, SUPPLY_FINANCE, BOTH]
+  RiskScore: [PASS, REFER, FAIL]
+  RiskRating: [LOW, MEDIUM, HIGH]
+  FeeType: [FLAT_FEE, PERCENTAGE_ONE_OFF, PERCENTAGE_DAILY, PERCENTAGE_MONTHLY, PERCENTAGE_YEARLY]
+  InsuranceStatus: [PENDING, REQUESTED, APPEALED, APPLIED, CANCELLED, DECLINED]
+  FacilityRateAppealType: [SUBSIDISE, SURCHARGE]
+  Currency: [GBP, EUR, USD]

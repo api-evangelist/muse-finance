@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: searched
+source: https://api-docs.getmymuse.com/docs/references
+description: >-
+  Muse Finance communicates API changes through an "API Update Notifications"
+  reference in its developer documentation. The public docs do not expose a
+  dated, structured changelog, so no individual entries are captured here (none
+  are published to capture); this pointer records the notification surface.
+scheme: unknown
+current_version: unknown
+notifications_url: https://api-docs.getmymuse.com/docs/references
+entries: []

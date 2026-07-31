@@ -1,0 +1,62 @@
+generated: '2026-07-20'
+method: searched
+source: >-
+  https://api-docs.getmymuse.com/docs/ — cross-cutting request/response
+  conventions harvested from the Authentication, Guideline and Troubleshooting
+  pages of the Muse Finance API documentation.
+description: >-
+  How the Muse Finance embedded-finance API behaves across every operation:
+  authentication style, rate-limit signaling, event notification model,
+  versioning and error handling. These are the runtime-semantics conventions
+  that the public docs describe but the (partner-gated) OpenAPI does not fully
+  express.
+
+api_style: REST over HTTPS, JSON request and response bodies
+
+authentication:
+  scheme: JWT bearer token (Authorization header) PLUS static API key (x-api-key header)
+  token_exchange: API key + Client ID + Client Secret exchanged for a short-lived JWT
+  docs: https://api-docs.getmymuse.com/docs/authentication
+  detail: authentication/muse-finance-authentication.yml
+
+idempotency:
+  supported: unknown
+  detail: >-
+    No idempotency-key header or replay semantics are documented in the public
+    API docs. Not asserted here to avoid fabrication.
+
+pagination:
+  style: unknown
+  detail: >-
+    List endpoints (GET /leads, /applications, /agreements, /fundsRequest) are
+    documented but pagination parameters/response envelope are not published in
+    the public docs.
+
+event_model:
+  webhooks:
+    supported: true
+    description: >-
+      Partners may register webhooks to be notified of relevant events (e.g.
+      lead status transitions) instead of polling.
+    detail: asyncapi/muse-finance-webhooks.yml
+  polling:
+    supported: true
+    description: >-
+      Where webhooks are not used, partners poll with periodic GET requests
+      (e.g. GET /leads) to observe asynchronous status changes.
+
+versioning:
+  scheme: unknown
+  update_notifications: https://api-docs.getmymuse.com/docs/references
+  detail: Muse publishes an "API Update Notifications" reference; see changelog/muse-finance-changelog.yml.
+
+error_envelope:
+  format: HTTP status codes (200/201 success; 400/401/403/404/500/504 failure)
+  detail: errors/muse-finance-problem-types.yml
+  note: A structured problem+json envelope is not documented in the public docs.
+
+rate_limit_signaling:
+  limit: 600 requests per 5-minute window
+  throttled_behavior: temporary access restriction on exceeding the limit
+  detail: rate-limits/muse-finance-rate-limits.yml
+  docs: https://api-docs.getmymuse.com/docs/troubleshooting

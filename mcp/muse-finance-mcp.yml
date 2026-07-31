@@ -1,0 +1,64 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: >-
+  Derived from operations documented at
+  https://api-docs.getmymuse.com/docs/features — Muse Finance does not publish a
+  hosted/remote MCP server; this is a candidate tool surface an integrator could
+  expose over MCP.
+description: >-
+  Candidate MCP tool list for the Muse Finance embedded-finance API, one tool
+  per documented operation. Not an official Muse server.
+server:
+  name: muse-finance
+  transport: http
+  url: null
+tools:
+  - name: list_leads
+    description: List all leads in the system.
+    source_operation: GET /leads
+  - name: create_lead
+    description: Submit a new lead for processing.
+    source_operation: POST /leads
+  - name: get_lead
+    description: Get details of a specific lead.
+    source_operation: GET /leads/{leadId}
+  - name: update_lead
+    description: Update an existing lead.
+    source_operation: PATCH /leads/{leadId}
+  - name: convert_lead
+    description: Convert a lead into an application.
+    source_operation: POST /leads/{leadId}/convert
+  - name: list_applications
+    description: List finance applications.
+    source_operation: GET /applications
+  - name: get_application
+    description: Get details of a specific application.
+    source_operation: GET /applications/{id}
+  - name: list_agreements
+    description: List finance agreements.
+    source_operation: GET /agreements
+  - name: get_agreement
+    description: Get details of a specific agreement.
+    source_operation: GET /agreements/{id}
+  - name: list_funds_requests
+    description: List funds requests.
+    source_operation: GET /fundsRequest
+  - name: get_funds_request
+    description: Get details of a specific funds request.
+    source_operation: GET /fundsRequest/{id}
+  - name: submit_exchange_rate
+    description: Submit an exchange rate for a funds request.
+    source_operation: POST /fundsRequest/{id}/exchange-rate
+  - name: create_supplier
+    description: Create a supplier record.
+    source_operation: POST /supplier
+  - name: list_credit_backed_offers
+    description: List credit-backed offers.
+    source_operation: GET /offers
+  - name: approve_credit_backed_offer
+    description: Approve a credit-backed offer.
+    source_operation: POST /offers/{id}/approve
+  - name: appeal_credit_backed_offer
+    description: Appeal a credit-backed offer.
+    source_operation: POST /offers/{id}/appeal

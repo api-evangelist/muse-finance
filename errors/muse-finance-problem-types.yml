@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: https://api-docs.getmymuse.com/docs/troubleshooting
+format: http-status
+description: >-
+  HTTP status codes returned by the Muse Finance API, harvested verbatim from
+  the Troubleshooting page of the public API documentation. Muse does not
+  publish an RFC 9457 problem+json envelope; these are the documented status
+  semantics.
+problems:
+  - status: 200
+    title: OK
+    meaning: The request was successful.
+    remediation: No action needed; request completed as intended.
+  - status: 201
+    title: Created
+    meaning: The request was successful, and a new resource was created.
+    remediation: No action needed; resource creation succeeded.
+  - status: 400
+    title: Bad Request
+    meaning: The request is malformed or invalid.
+    remediation: Review request syntax, parameters, and formatting before retrying.
+  - status: 401
+    title: Unauthorized
+    meaning: The user is not authenticated.
+    remediation: Provide valid authentication credentials (JWT + x-api-key) and retry.
+  - status: 403
+    title: Forbidden
+    meaning: The user is authenticated but not authorised.
+    remediation: Verify the partner has appropriate permissions for the requested resource.
+  - status: 404
+    title: Not Found
+    meaning: The requested resource is not found.
+    remediation: Confirm the resource exists and verify the correct endpoint URL.
+  - status: 500
+    title: Internal Server Error
+    meaning: Indicates an unexpected internal server error.
+    remediation: Retry the request; contact technical-support@getmymuse.com if it persists.
+  - status: 504
+    title: Gateway Timeout
+    meaning: The server did not receive a timely response from an upstream server.
+    remediation: Retry after a brief delay; check upstream service availability.
+support: technical-support@getmymuse.com

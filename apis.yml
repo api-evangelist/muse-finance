@@ -1,8 +1,28 @@
 aid: muse-finance
 name: Muse Finance
-description: Muse Finance is a company surfaced as a portfolio company of techstars and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Muse Finance is a UK embedded-finance platform (Muse Finance Limited, London &
+  Hastings) providing modular working-capital infrastructure — invoice finance,
+  trade finance and supply finance — that lenders, originators, foreign-exchange
+  providers and payment platforms integrate as a white-label product or via a
+  REST API. The Muse Finance API lets partners submit and convert leads, manage
+  finance applications and agreements, raise funds requests, submit exchange
+  rates, and handle credit-backed offers, with JWT + API-key authentication and
+  webhook or polling event notifications. Backed by Techstars.
 url: https://raw.githubusercontent.com/api-evangelist/muse-finance/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://getmymuse.com/favicon-96x96.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,10 +31,32 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Embedded Finance
+- Invoice Finance
+- Trade Finance
+- Lending
+- Fintech
+- Working Capital
+- United Kingdom
+apis:
+- name: Muse Finance API
+  description: >-
+    Embedded-finance REST API for submitting and converting leads, managing
+    finance applications and agreements, funds requests and credit-backed
+    offers. Authenticated with a JWT bearer token plus an x-api-key header.
+  humanURL: https://api-docs.getmymuse.com/docs/
+  properties:
+  - type: Documentation
+    url: https://api-docs.getmymuse.com/docs/
+  - type: APIReference
+    url: https://cdn-live.funding-systems.com/api-documents/finance-api/swagger.html
+  - type: GettingStarted
+    url: https://api-docs.getmymuse.com/docs/getting-started
+  - type: Authentication
+    url: authentication/muse-finance-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +65,44 @@ maintainers:
 common:
 - type: Website
   url: https://getmymuse.com/
+- type: DeveloperPortal
+  url: https://muse-portal-prod.portal.getmymuse.com/
+- type: Documentation
+  url: https://api-docs.getmymuse.com/docs/
+- type: APIReference
+  url: https://cdn-live.funding-systems.com/api-documents/finance-api/swagger.html
+- type: GettingStarted
+  url: https://api-docs.getmymuse.com/docs/getting-started
+- type: Login
+  url: https://muse-portal-prod.portal.getmymuse.com/
+- type: Support
+  url: mailto:technical-support@getmymuse.com
+- type: Authentication
+  url: authentication/muse-finance-authentication.yml
+- type: Conventions
+  url: conventions/muse-finance-conventions.yml
+- type: ErrorCatalog
+  url: errors/muse-finance-problem-types.yml
+- type: RateLimits
+  url: rate-limits/muse-finance-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/muse-finance-webhooks.yml
+- type: DataModel
+  url: data-model/muse-finance-data-model.yml
+- type: MCPServer
+  url: mcp/muse-finance-mcp.yml
+- type: Conformance
+  url: conformance/muse-finance-conformance.yml
+- type: Lifecycle
+  url: lifecycle/muse-finance-lifecycle.yml
+- type: ChangeLog
+  url: changelog/muse-finance-changelog.yml
+- type: LLMsTxt
+  url: llms/muse-finance-llms.txt
+- type: DomainSecurity
+  url: security/muse-finance-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v1
